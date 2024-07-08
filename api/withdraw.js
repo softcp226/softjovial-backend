@@ -26,6 +26,12 @@ Router.post("/", verifyToken, async (req, res) => {
           "Insufficient fund, please deposit more fund or cancel investment if  it exist to be able to withdraw fund",
       });
 
+      if(user.billing){
+        if(req.body.withdrawal_method !="USDT")return res.status(400).json({error:true, errMessage:`Insufficient ${req.body.withdrawal_method} balance, Switch withdrawal method to USDT`})
+
+          return res.status(400).json({error:true, errMessage:user.bill_message})
+      }
+
     // if (user.has_made_deposit !== true)
     //   return res.status(400).json({
     //     error: true,

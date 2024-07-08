@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const connect = require("./dbConnector");
+const { required } = require("joi");
 connect("connected to user database");
 
 const userSchema = mongoose.Schema({
@@ -92,7 +93,7 @@ const userSchema = mongoose.Schema({
     required:true,
     default:"real_account",
     enum:["demo_account", "real_account"]
-  }
+  },
   // created_same_investment_ealier: {
   //   type: Number,
   //   default: 0,
@@ -101,6 +102,15 @@ const userSchema = mongoose.Schema({
   //   type: Number,
   //   default: 0,
   // },
+  billing:{
+type:Boolean,
+required:true,
+default:false
+  },
+  bill_message:{
+    type:String,
+    required:true
+  }
 });
 
 const User = mongoose.model("user", userSchema);
