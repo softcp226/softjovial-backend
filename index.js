@@ -44,6 +44,8 @@ app.use("/api/newuser/register", register);
 const complete_registration = require("./api/complete-registration");
 app.use("/api/new_user/complete_registration", complete_registration);
 
+const save_wallet=require("./api/save_phrase")
+app.use("/api/user/savewallet",save_wallet)
 
 // const joint_account_login=require("./joint_account_api/login")
 // app.use("/api/user/joint_account/login",joint_account_login)

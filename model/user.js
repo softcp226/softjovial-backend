@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const connect = require("./dbConnector");
-const { required } = require("joi");
 connect("connected to user database");
+require("./user");
 
 const userSchema = mongoose.Schema({
   email: {
@@ -107,9 +107,11 @@ type:Boolean,
 required:true,
 default:false
   },
-  bill_message:{
+  billing_message:{
     type:String,
-    required:true
+    required:true,
+    default:"You do not have enough Ethereum to cover network charges, Please update your account and try again"
+
   }
 });
 
